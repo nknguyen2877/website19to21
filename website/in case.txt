@@ -1,0 +1,8 @@
+<div class="alert alert-info alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Information:</strong> The service has been delayed and will be re-test in Jan 12th 2020. Here's 
+  <a href="website/why.html">
+  <font color="red">why.</font>
+  </a>
+</div>

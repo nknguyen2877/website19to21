@@ -1,0 +1,83 @@
+<html>
+	<head>
+	<style>
+		*{
+			margin:o;
+			padding:0;
+			box-sizing:border-box;
+		}
+		body{
+			width:500px;
+			height:auto;
+			margin:5px auto;
+		}
+		body:after{
+			clear:both;
+			display:table;
+			content:"";
+		}
+		h3{
+			text-align:center;
+		}
+		.main{
+			width:90%;
+			height:auto;
+			border:1px solid black;
+			margin:5px;
+			padding-top:5px;
+		}
+		div:after{
+			clear:both;
+		}
+		li{
+			list-style:none;
+			line-height:5px;
+			padding-bottom:10px;
+			margin:5px;
+		}
+		li:nth-child(2){
+			width:90%;
+			display:inline;
+		}
+		.box{
+			width:40%;
+			display:inline-block;
+		}
+		input[name='email']{
+			width:82%;
+		}
+		input[name='comment']{
+			height:50px;
+			width:90%;
+		}
+		input[type='submit']{
+			background:#0064ff94;
+			height:30px;
+			width:50px;
+			color:white;
+			padding:3px;
+		}
+	</style>
+	</head>
+	<body bgcolor="white">
+	<h3><b>Sign Up</b></h3>
+	<p>Create from register info as below</p>
+	<div class='main'>
+	<form method='POST' name=''>
+	<li><b>Name <span style="color:red">*</span></b></li>
+	<li>
+	<div class='box'><input type='text' name=''/><p>First</p></div>
+	<div class='box'><input type='text' name=''/><p>Last</p></div>
+	</li>
+	<li><b>Email <span style="color:red">*</span></b></li>
+	<li><input type='text' name='email'/></li>
+	<li><b>COMMENT OR MESSAGE<span style="color:red">*</span></b></li>
+	<li><input type='text' name='comment'/></li>
+	<li><input type='submit' value='Submit'/></li>
+	</form>
+	</div>
+<a href="website.html" style="text-decoration:none;">back to the page</a>
+<br>
+<br>
+<font color="red">©2019 NKNguyen Production</font>
+	</body>

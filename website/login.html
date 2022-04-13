@@ -1,0 +1,75 @@
+<?php
+session_start();
+if (isset($_SESSION['status']) && $_SESSION['status'] == 'success') {
+	header('Location: index.php');
+	die();
+}
+
+$username_login = $password_login = "";
+if (isset($_POST['username'])) {
+	$username_login = $_POST['username'];
+}
+if (isset($_POST['password'])) {
+	$password_login = $_POST['password'];
+}
+
+if (!empty($_POST)) {
+	require_once ('database1.php');
+
+	$sql  = 'select * from users where username = "'.$username_login.'" and password = "'.$password_login.'"';
+	$data = executeResult($sql);
+
+	//kiem tra du lieu dang ky vs du lieu nhap form login
+	if ($data != null && count($data) >
+
+<h1 style="color:red;  text-align: center">Login</h1>
+<html>
+<html>
+<head>
+<title>Login</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="https://yt3.ggpht.com/a-/AAuE7mBIIQ-4w4hQ9VCQR2qApA-H8hCBCEX7Bk_P0alicQ=s88-c-k-c0xffffffff-no-rj-mo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</script>
+<script src="js/login.js"></script>
+</head>
+<body>
+<form id="form_id" method="post" name="myform">
+<div class="container">
+<div class="panel panel-primary">
+<div class="panel-heading">
+</div>
+<div class="panel-body">
+<form method="post">
+<div class="form-group">
+<label>Username</label>
+<input type="text" name="username" class="form-control">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" name="password" class="form-control">
+</div>
+<form action="success.html">
+<button type="submit" class="btn btn-success">Login</button>
+</form>
+</form>
+</form>
+</div>
+</div>
+</div>
+<br>
+<hr>
+<font style="font-family:times;font-size:20px;">
+<a href="file:///C:/Users/Admin/Desktop/website.html" style="text-decoration:none;">
+<font color="yellow">back to the homepage</font>
+</a>
+<br>
+<br>
+</font>
+<br>
+<font color="red">©2019 NKNguyen Production™</font></body>
+</body>

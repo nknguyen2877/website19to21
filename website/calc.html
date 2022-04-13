@@ -1,0 +1,123 @@
+<html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="https://yt3.ggpht.com/a-/AAuE7mBIIQ-4w4hQ9VCQR2qApA-H8hCBCEX7Bk_P0alicQ=s88-c-k-c0xffffffff-no-rj-mo">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+		function isCheck(_name){
+			var v = 'xxx';
+			var arr =  document.getElementsByName(_name);
+			if(arr.length>0){
+				for(i in arr){
+					if(arr[i].checked){
+						v = arr[i].value; 
+						break;
+					}
+				}
+			}
+			return v;
+		}
+		function showMessage(_id, _msg){
+			document.getElementById(_id).innerHTML = _msg;
+		}
+		function calc(){
+			var f 	= document.frmCalc;
+			var n1 	= f.txtNbr1.value;
+			var n2 	= f.txtNbr2.value;
+			var opt = isCheck('operator');
+			var flag = 'YES';
+			var r = '';
+			//Kiem tra n1, n2;
+			showMessage('msg_opt',"");
+			showMessage('txtNbr1','');
+			showMessage('txtNbr2','');
+			console.log(n1.length);
+			if(n1.length==0){
+				err_mes_n1 = "Number 1 must be not null";
+				showMessage('txtNbr1',err_mes_n1);
+				flag = 'NO';
+				
+			}
+			if(Number.isInteger(parseFloat(n1))==false){
+				err_mes_n1 = "You must be enter numbering Number 1";
+				showMessage('txtNbr1',err_mes_n1);
+				flag = 'NO';
+			}
+			
+			if(n2.length==0){
+				err_mes_n1 = "Number 1 must be not null";
+				showMessage('txtNbr2',err_mes_n1);
+				flag = 'NO';
+			}
+			if(Number.isInteger(parseFloat(n2))==false){
+				err_mes_n1 = "You must be enter numbering to Number 2";
+				showMessage('txtNbr2',err_mes_n1);
+				flag = 'NO';
+			}
+			if(opt==='xxx'){
+				showMessage('msg_opt',"You must choose one operator");
+				flag = 'NO';
+			}
+			if(flag!='NO'){
+				r = eval(n1+opt+n2);
+				f.txtResult.value = r;
+				flag = 'NO';
+			}
+			if(flag==='NO'){
+				return false;
+			}
+			
+		}
+	</script>
+<style>
+div {
+  padding: 20px;
+  border: 1px solid #4CAF50;
+  height: 200px;
+}
+</style>
+</head>
+<body>
+<form name='frmCalc' method='POST'>
+<fieldset>
+<div>
+<h3>
+<font color="blue">Calc</font><font color="red">ulator</font>
+</h3>
+<input type="text" name='txtNbr1' autocomplete="off" id="a" autofocus>
+	<br>
+	<span class='error_msg' id='txtNbr1'></span>
+			<br>			
+            <input type="text" name='txtNbr2' autocomplete="off" id="b">
+			<br>
+			<span class='error_msg' id='txtNbr2'></span>
+			<br>
+            <label for="add">
+                <input type="radio" id="add" name="operator" value="+">
+                Add
+            </label>
+            <label for="sub">
+                <input type="radio" id="sub" name="operator" value="-">
+                Sub
+            </label>
+            <label for="mul">
+<input type="radio" id="mul" name="operator" value="*">
+                Mul
+            </label>
+            <label for="div">
+<input type="radio" id="div" name="operator" value="/">
+                Div
+</label>
+<br>
+<span class='error_msg' id='msg_opt'></span>
+<input type="text" name='txtResult' autocomplete="off" id="c">
+<button type="submit" onclick="return calc();">Calculate</button>
+        </fieldset>
+</div>
+    </form>
+<font color="red">©2020 NKNguyen Production™</font>
+</body>

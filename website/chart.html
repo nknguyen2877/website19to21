@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Báo Cáo</title>
+    <link href="style.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+	<script src="highcharts.js"></script>
+</head>
+<body>
+
+<div id="chart-line">Biểu Đồ Đường Điểm</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#chart-line').highcharts({
+            title: {
+                text: 'Điểm Thi Sinh Viên',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Nguồn: leminhhoa.com',
+                x: -20
+            },
+            xAxis: {
+                //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: ["Hung","Lan","Cong","Minh","Tuan","Huong","Phung","Khuong","Bao Cong","Trien Chieu"]            },
+            yAxis: {
+                title: {
+                    text: 'Thang Điểm'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }],
+                min: 0,
+                max: 10,
+                tickInterval: 1
+            },
+            tooltip: {
+                valueSuffix: ' Điểm'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Tiếng Anh',
+                //data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                data: [9,8,9,7,7,8,8,5,9,8]            }]
+        });
+    });
+</script>
+
+
+<div id="chart-pie">Biểu Đồ Hình Bánh</div>
+<script type="text/javascript">
+    $(function () {
+        $('#chart-pie').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Thống Kê Sinh Viên Theo Năm Sinh'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [
+                    
+                                        {
+                        name: '1991',
+                        y: 1                    },
+                                        {
+                        name: '1992',
+                        y: 7                    },
+                                        {
+                        name: '1993',
+                        y: 1                    },
+                                        {
+                        name: '1995',
+                        y: 4                    },
+                                        {
+                        name: '1998',
+                        y: 1                    },
+                                        {
+                        name: '1999',
+                        y: 1                    },
+                                        {
+                        name: '2001',
+                        y: 1                    },
+                                        {
+                        name: '2002',
+                        y: 2                    },
+                    
+                ]
+            }]
+        });
+    });
+</script>
+
+</body>
+</html>

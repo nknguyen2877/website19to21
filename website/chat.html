@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://yt3.ggpht.com/a-/AAuE7mBIIQ-4w4hQ9VCQR2qApA-H8hCBCEX7Bk_P0alicQ=s88-c-k-c0xffffffff-no-rj-mo">
+<title>chat</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="chat.js"></script>
+<link rel="stylesheet" href="./index.css">
+<script type="text/javascript">  
+function update()
+{
+    $.post("chat.php", {}, function(data){ $("#screen").val(data);});  
+ 
+    setTimeout('update()', 1000);
+}
+ 
+$(document).ready(
+ 
+function() 
+    {
+     update();
+ 
+     $("#button").click(    
+      function() 
+      {         
+       $.post("chat.php", 
+    { message: $("#message").val()},
+    function(data){ 
+    $("#screen").val(data); 
+    $("#message").val("");
+    }
+    );
+      }
+     );
+    });
+</script>
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style>
+</head>
+<body bgcolor="#CACFD2">
+<h2>
+<BR>
+<font color="yellow">Ch</font><font color="orange">at</font>
+|
+<font style="font-family:helvetica;font-weight:normal;"> 
+<font color="blue">NK</font><font color="red">Nguyen</font><font color="yellow">2877</font>
+</font>
+</h2>
+<hr>
+<p>People on the group:</p>
+<font color="red">
+<p>
+Lê Tấn Minh -
+<a href="https://www.facebook.com/https://www.facebook.com/profile.php?id=100035063400671" style="text-decoration:none;">
+<font color="blue">Face</font><font color="white">book</font>
+</a>
+</p>
+<p>
+Tùng Trần - <a href="" style="text-decoration:none;"></a>
+</p>
+<p>
+Kanh Nguyễn - <a href="" style="text-decoration:none;"></a>
+</p>
+<p>
+Vũ Quang Minh - <a href="" style="text-decoration:none;"></a>
+</p>
+</font>
+<div class="container">
+<img src="D:\avatar\Tùng Trần.jpg" alt="Avatar" style="width:100%;">
+<h3>Tùng Trần</h3>
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+<div class="container darker">
+<img src="D:\avatar\Kanh Nguyễn.jpg" alt="Avatar" class="right" style="width:100%;">
+<h3>Kanh Nguyễn</h3>
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container">
+<img src="D:\avatar\Lê Tấn Minh.jpg" alt="Avatar" style="width:100%;">
+<h3>Lê Tấn Minh</h3>  
+<p></p>
+<span class="time-right">11:02</span>
+</div>
+<div class="container darker">
+<img src="D:\avatar\VQM.jpg" alt="Avatar" class="right" style="width:100%;">
+<h3>Vũ Quang Minh</h3>
+<p></p>
+<span class="time-left">11:05</span>
+</div>
+<hr>
+<form action="./chat.js" method="post">
+<textarea id="screen" cols="30" rows="10">
+</textarea>
+<br>
+<button id="button">Send</button>
+</form>
+</body>

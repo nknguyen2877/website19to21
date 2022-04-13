@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>carousel page</title>
+    <link rel="shortcut icon" href="https://yt3.ggpht.com/a-/AAuE7mBIIQ-4w4hQ9VCQR2qApA-H8hCBCEX7Bk_P0alicQ=s88-c-k-c0xffffffff-no-rj-mo">
+</head>
+<body bgcolor="black">
+<style>
+p.one {
+  border-style: solid;
+  border-color: red blue yellow;
+}
+
+div {
+  margin: 00px 420px 00px 420px;
+}
+</style>
+<center>
+<h1>
+<div>
+<p class="one">
+<a href="C:\Users\Admin\Desktop\website.html" class="logo" style="text-decoration:none;font-weight:normal;">
+<font style="font-family:sans-serif;font-size:36px;">
+<font color="blue">NK</font><font color="red">Nguyen</font><font color="yellow">2877</font>
+</font>
+</div>
+</a>
+</p>
+</h1>
+</center>
+<font style="font-family:helvetica;font-size:21px;">
+<center>
+<font color="red">
+Carousel page is currently closed and it's only available for beta testers
+</center>
+<br>
+<br>
+<font color="white">
+In order to access to the carousel page, you would need to write the password.
+</font>
+<br>
+<br>
+<form>
+    <label for="pswd">
+    <font color="white">Enter the password:</font>    
+    </label>
+    <input type="password" id="pswd">
+    <input type="button" value="Submit" onclick="checkPswd();" />
+    <h5>
+    <font color="white">press "Submit".</font>
+    </h5>
+</form>
+<script>
+function checkPswd() {
+    var confirmPassword = "nk20122004";
+    var password = document.getElementById("pswd").value;
+    if (password == confirmPassword) {
+         window.location="photos/carrousel-photos.html";
+    }
+    else{
+        alert("it's not correct.");
+    }
+}
+</script>
+<hr>
+<font style="font-size:20px;font-weight:normal;">
+<a href="file:///C:/Users/Admin/Desktop/website.html" style="text-decoration:none;">
+<font color="yellow">homepage</font>
+</a>
+<br>
+<br>
+<font color="red">©2020 NKNguyen Production™</font>
+</font>
+</font>
+</body>
+</html>
